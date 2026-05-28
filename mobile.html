@@ -1,0 +1,2152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proposta Rock in Rio 2026 · E+ MKT × Camarotes do Francês</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────
+   E+ MKT  ·  Rock in Rio 2026  ·  Mobile (vertical)
+   ───────────────────────────────────────────── */
+
+:root {
+  --ink:           #0a0a0c;
+  --ink-2:         #14110e;
+  --ink-3:         #1d1812;
+  --paper:         #f5f1ea;
+  --cream:         #efe7d6;
+  --muted:         rgba(245, 241, 234, 0.62);
+  --muted-2:       rgba(245, 241, 234, 0.38);
+  --line:          rgba(245, 241, 234, 0.12);
+  --line-strong:   rgba(245, 241, 234, 0.28);
+
+  --brand-red:     #e11d2e;
+  --brand-red-2:   #c11424;
+  --brand-red-deep:#7a0d18;
+  --frances-navy:  #0b1f4d;
+  --gold:          #c9a96e;
+  --gold-2:        #a78544;
+
+  --f-display: "Anton", "Archivo Black", "Impact", sans-serif;
+  --f-head:    "Archivo", "Manrope", system-ui, sans-serif;
+  --f-body:    "Manrope", system-ui, sans-serif;
+  --f-mono:    "JetBrains Mono", "IBM Plex Mono", monospace;
+
+  --pad: 24px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ────── shell — keeps content centered on tablet/desktop too ────── */
+.app {
+  max-width: 460px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+/* ────── sticky top bar ────── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px var(--pad);
+  background: rgba(10,10,12,0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-brand { display: flex; align-items: center; gap: 10px; }
+.topbar-brand img { height: 22px; width: auto; opacity: 0.95; }
+.topbar-brand .sep { width: 1px; height: 14px; background: var(--line-strong); }
+.topbar-brand .label {
+  font-family: var(--f-head);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.topbar .doc-num {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--muted-2);
+}
+
+/* progress strip */
+.progress {
+  position: sticky;
+  top: 51px;
+  z-index: 49;
+  height: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: var(--brand-red);
+  transition: width 0.15s ease-out;
+}
+
+/* ────── sections ────── */
+section {
+  position: relative;
+  padding: 56px var(--pad) 56px;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+section .num-tag {
+  position: absolute;
+  top: 18px;
+  right: var(--pad);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted-2);
+  z-index: 3;
+}
+section .num-tag strong { color: var(--paper); font-weight: 500; }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  margin-bottom: 16px;
+}
+.eyebrow.muted { color: var(--muted); }
+.eyebrow.gold  { color: var(--gold); }
+
+h2.title {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 0.94;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 18px;
+}
+h2.title .hl { color: var(--brand-red); }
+
+p.lede {
+  font-family: var(--f-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--cream);
+  margin-bottom: 16px;
+  text-wrap: pretty;
+}
+p.lede strong { color: var(--paper); font-weight: 700; }
+p.lede em { font-style: italic; color: var(--muted); }
+
+.bg-grain {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(225, 29, 46, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(201, 169, 110, 0.07) 0%, transparent 60%);
+  z-index: 0;
+}
+section > * { position: relative; z-index: 1; }
+
+.ft-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--brand-red);
+  border-radius: 50%;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* ════════════════════════════════════════════ */
+/* 01 · COVER                                    */
+/* ════════════════════════════════════════════ */
+.s-cover {
+  padding: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 20%, rgba(225,29,46,0.30) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(122,13,24,0.55) 0%, transparent 70%),
+    var(--ink);
+}
+.cover-top {
+  padding: 24px var(--pad) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.cover-partner { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.cover-partner.right { align-items: flex-end; text-align: right; }
+.cover-partner .eyebrow { font-size: 9.5px; letter-spacing: 0.26em; margin-bottom: 0; }
+.cover-partner img {
+  height: 44px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  filter: brightness(1.05);
+}
+.cover-hero {
+  flex: 1;
+  padding: 48px var(--pad) 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.cover-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-head);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.cover-meta .dot { color: var(--brand-red); }
+.cover-title {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 78px;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 22px;
+}
+.cover-title .red {
+  display: block;
+  color: var(--brand-red);
+  text-shadow: 0 0 60px rgba(225,29,46,0.45);
+}
+.cover-sub-eyebrow {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 10px;
+}
+.cover-sub-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--cream);
+  max-width: 340px;
+}
+.cover-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 16px;
+  padding: 24px var(--pad) 36px;
+  border-top: 1px solid var(--line-strong);
+}
+.cover-bottom-col { display: flex; flex-direction: column; gap: 6px; }
+.cover-bottom-col .eyebrow {
+  font-size: 9.5px;
+  letter-spacing: 0.28em;
+  margin-bottom: 2px;
+  color: var(--brand-red);
+}
+.cover-bottom-val {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 12.5px;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: var(--paper);
+}
+
+/* ════════════════════════════════════════════ */
+/* 02 · SOBRE NÓS                                */
+/* ════════════════════════════════════════════ */
+.about-card {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.about-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.about-card-top .section-num {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted-2);
+}
+.about-card-top .eyebrow { font-size: 10px; margin-bottom: 0; }
+.about-card-body p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--cream);
+}
+
+/* ════════════════════════════════════════════ */
+/* 03 · O EVENTO                                 */
+/* ════════════════════════════════════════════ */
+.s-event { padding: 0; border-bottom: 1px solid var(--line); }
+.event-photo {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+.event-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.78) saturate(1.05);
+}
+.event-photo-grad {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,12,0) 0%, rgba(10,10,12,0.4) 60%, var(--ink) 100%);
+}
+.event-photo .num-tag { color: var(--paper); }
+.event-content { padding: 36px var(--pad) 56px; }
+.event-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 8px;
+}
+.event-stat {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px 14px;
+}
+.event-stat-num {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 44px;
+  line-height: 1;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+.event-stat-num small { font-size: 22px; color: var(--brand-red); }
+.event-stat-lbl {
+  display: block;
+  font-family: var(--f-head);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+.event-stat-lbl em { color: var(--muted-2); font-style: normal; font-size: 10px; }
+
+.event-strip {
+  margin-top: 22px;
+  padding: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+}
+.event-strip-item { display: inline-flex; align-items: center; gap: 6px; }
+.event-strip-tail {
+  flex: 1 0 100%;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted-2);
+  text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════════ */
+/* 04 · LINE-UP                                  */
+/* ════════════════════════════════════════════ */
+.lineup-day {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.lineup-day.featured {
+  border-color: rgba(201,169,110,0.32);
+  background: linear-gradient(180deg, rgba(201,169,110,0.05), var(--ink-3));
+}
+.lineup-day-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.lineup-day-num {
+  font-family: var(--f-display);
+  font-size: 40px;
+  line-height: 1;
+  color: var(--brand-red);
+}
+.lineup-day-mo {
+  font-family: var(--f-head);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper);
+  line-height: 1.3;
+}
+.lineup-day-mo em { color: var(--muted); font-style: normal; font-size: 9.5px; }
+.lineup-acts { list-style: none; }
+.lineup-acts li {
+  font-family: var(--f-head);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--cream);
+  padding: 4px 0;
+  border-top: 1px solid rgba(245,241,234,0.05);
+}
+.lineup-acts li:first-child { border-top: none; }
+.lineup-acts li.headliner {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0;
+  color: var(--paper);
+  text-transform: uppercase;
+  padding-bottom: 6px;
+}
+.lineup-acts li.more {
+  font-size: 11.5px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 4px;
+  padding-top: 6px;
+}
+.lineup-note {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 6px;
+  margin-bottom: 22px;
+  font-style: italic;
+}
+
+/* ════════════════════════════════════════════ */
+/* 05 · ÁREA VIP                                 */
+/* ════════════════════════════════════════════ */
+.vip-benefit {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+.vip-benefit:first-of-type { border-top: 1px solid var(--line-strong); margin-top: 6px; }
+.vip-benefit-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+}
+.vip-benefit-icon svg { width: 22px; height: 22px; }
+.vip-benefit-body { display: flex; flex-direction: column; gap: 4px; }
+.vip-benefit-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--muted-2);
+}
+.vip-benefit h3 {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+}
+.vip-benefit p {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--cream);
+}
+
+/* ════════════════════════════════════════════ */
+/* 06 · VALOR ÁREA VIP                           */
+/* ════════════════════════════════════════════ */
+.price-card {
+  background: linear-gradient(180deg, rgba(225,29,46,0.10), var(--ink-3));
+  border: 1px solid rgba(225,29,46,0.32);
+  border-radius: 4px;
+  padding: 24px 22px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.price-card::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(225,29,46,0.18), transparent 60%);
+  pointer-events: none;
+}
+.price-card-eyebrow {
+  display: block;
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.26em;
+  color: var(--gold);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.price-card-amount {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.price-currency {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--muted);
+  padding-bottom: 16px;
+}
+.price-figure {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 84px;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+}
+.price-cents {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--muted);
+  padding-bottom: 14px;
+}
+.price-card-mini {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: var(--cream);
+  text-transform: uppercase;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.price-card-mini .dot { color: var(--brand-red); }
+.price-card-foot {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.price-list { list-style: none; margin: 18px 0 0; }
+.price-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--cream);
+  border-bottom: 1px dashed var(--line);
+}
+.price-warn {
+  margin-top: 16px;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(225,29,46,0.08);
+  border: 1px solid rgba(225,29,46,0.32);
+  border-left-width: 3px;
+  border-radius: 3px;
+}
+.price-warn .warn-icon {
+  width: 22px; height: 22px;
+  background: var(--brand-red);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-display);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.price-warn p {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--cream);
+}
+.price-warn strong { color: var(--paper); }
+
+/* ════════════════════════════════════════════ */
+/* 07 · CAMAROTE VIP · INTRO                     */
+/* ════════════════════════════════════════════ */
+.s-camarote-intro { padding: 0; }
+.camarote-photo {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+.camarote-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.82) saturate(1.08);
+}
+.camarote-photo-grad {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,12,0.1) 0%, rgba(10,10,12,0.5) 60%, var(--ink) 100%);
+}
+.camarote-content { padding: 36px var(--pad) 56px; }
+.camarote-intro-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+}
+.cstat { text-align: left; }
+.cstat .num {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 38px;
+  line-height: 1;
+  color: var(--gold);
+}
+.cstat .num small { font-size: 22px; }
+.cstat .lbl {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--f-head);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.cstat .lbl em { color: var(--muted-2); font-style: normal; font-size: 9.5px; }
+
+/* ════════════════════════════════════════════ */
+/* 08 · CAMAROTE BENEFÍCIOS                      */
+/* ════════════════════════════════════════════ */
+.cbenefit {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 18px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.cbenefit.big {
+  background: linear-gradient(180deg, rgba(225,29,46,0.10), var(--ink-3));
+  border-color: rgba(225,29,46,0.30);
+}
+.cbenefit-num {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--brand-red);
+  display: block;
+  margin-bottom: 6px;
+}
+.cbenefit h3 {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--paper);
+  margin-bottom: 6px;
+}
+.cbenefit p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--cream);
+}
+.cbenefit p strong { color: var(--paper); }
+.cbenefit-tag {
+  margin-top: 10px;
+  padding: 6px 10px;
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  border: 1px solid rgba(201,169,110,0.32);
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════════ */
+/* 09 · GALERIA                                  */
+/* ════════════════════════════════════════════ */
+.gallery-fig {
+  margin-bottom: 12px;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.gallery-fig img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.gallery-fig.main img { height: 240px; }
+.gallery-fig figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 12px 14px;
+  background: linear-gradient(0deg, rgba(10,10,12,0.92), transparent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-head);
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.gallery-fig-num {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--brand-red);
+}
+
+/* ════════════════════════════════════════════ */
+/* 10 · INVESTIMENTO                             */
+/* ════════════════════════════════════════════ */
+.invest-card {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 14px;
+  position: relative;
+}
+.invest-card.featured {
+  background: linear-gradient(180deg, rgba(225,29,46,0.12), var(--ink-3));
+  border-color: rgba(225,29,46,0.40);
+}
+.invest-flag {
+  position: absolute;
+  top: -10px;
+  right: 14px;
+  background: var(--brand-red);
+  color: white;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+.invest-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.invest-card-num {
+  font-family: var(--f-display);
+  font-size: 56px;
+  line-height: 1;
+  color: var(--paper);
+}
+.invest-card.featured .invest-card-num { color: var(--brand-red); }
+.invest-card-lbl {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.invest-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 13.5px;
+  color: var(--cream);
+  border-top: 1px dashed var(--line);
+}
+.invest-row:first-child { border-top: none; }
+.invest-row.total {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-strong);
+  font-family: var(--f-head);
+  font-weight: 700;
+  color: var(--paper);
+}
+.invest-row .rv { font-family: var(--f-mono); font-weight: 500; }
+.invest-card-foot {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(0,0,0,0.32);
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.invest-card.featured .invest-card-foot {
+  background: rgba(225,29,46,0.18);
+}
+.pp-lbl {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.pp-val {
+  font-family: var(--f-display);
+  font-size: 24px;
+  color: var(--paper);
+}
+.invest-card.featured .pp-val { color: var(--brand-red); }
+.invest-note {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(245,241,234,0.04);
+  border-left: 2px solid var(--gold);
+  border-radius: 2px;
+  margin-top: 10px;
+}
+.invest-note-icon {
+  width: 18px; height: 18px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-head);
+  font-style: italic;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.invest-note p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.invest-note strong { color: var(--paper); }
+
+/* ════════════════════════════════════════════ */
+/* 11 · DISPONIBILIDADE                          */
+/* ════════════════════════════════════════════ */
+.avail-summary {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-top: 6px;
+}
+.avail-summary-card {
+  flex: 1;
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 14px;
+}
+.avail-summary-card.muted { opacity: 0.62; }
+.avail-summary-num {
+  font-family: var(--f-display);
+  font-size: 42px;
+  line-height: 1;
+  color: var(--brand-red);
+}
+.avail-summary-card.muted .avail-summary-num { color: var(--muted); }
+.avail-summary-lbl {
+  font-family: var(--f-head);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+.avail-day {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.avail-day.sold {
+  background: rgba(245,241,234,0.02);
+  opacity: 0.55;
+}
+.avail-day-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.avail-day-num {
+  font-family: var(--f-display);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--paper);
+}
+.avail-day.sold .avail-day-num { color: var(--muted); }
+.avail-day-mo {
+  font-family: var(--f-head);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+.avail-day-mo em { font-style: normal; color: var(--muted-2); font-size: 8.5px; display: block; }
+.avail-day-act {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--paper);
+}
+.avail-day-act.tbc { color: var(--muted); font-weight: 400; font-style: italic; }
+.avail-badge {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.avail-badge.open {
+  background: rgba(123,194,90,0.14);
+  color: #9ad978;
+  border: 1px solid rgba(123,194,90,0.30);
+}
+.avail-badge.sold {
+  background: rgba(225,29,46,0.10);
+  color: rgba(225,29,46,0.85);
+  border: 1px solid rgba(225,29,46,0.30);
+}
+.avail-badge .avail-dot {
+  width: 6px; height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+}
+.avail-foot-note {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-left: 2px solid var(--brand-red);
+  background: rgba(225,29,46,0.05);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+  line-height: 1.45;
+}
+.avail-foot-note strong { color: var(--paper); }
+
+/* ════════════════════════════════════════════ */
+/* 12 · PERSONALIZAÇÃO  /  13 · SERVIÇOS         */
+/* ════════════════════════════════════════════ */
+.custom-item, .service-item {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 10px;
+}
+.custom-num, .service-num {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.custom-item h3, .service-item h3 {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--paper);
+  margin-bottom: 4px;
+}
+.custom-item p, .service-item p {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--cream);
+}
+.custom-item p strong { color: var(--paper); }
+.custom-foot, .services-foot {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-left: 2px solid var(--gold);
+  background: rgba(201,169,110,0.06);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+  line-height: 1.45;
+}
+.custom-foot strong, .services-foot strong { color: var(--paper); }
+
+/* ════════════════════════════════════════════ */
+/* 14 · PRÓXIMOS PASSOS / CONTATO                */
+/* ════════════════════════════════════════════ */
+.s-next {
+  background:
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(225,29,46,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(11,31,77,0.30) 0%, transparent 65%),
+    var(--ink);
+  border-bottom: none;
+}
+.next-steps {
+  list-style: none;
+  counter-reset: step;
+  margin-top: 12px;
+  margin-bottom: 28px;
+}
+.next-steps li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.next-steps li:first-child { border-top: 1px solid var(--line-strong); }
+.next-step-num {
+  font-family: var(--f-display);
+  font-size: 24px;
+  line-height: 1;
+  color: var(--brand-red);
+}
+.next-steps h4 {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--paper);
+  margin-bottom: 3px;
+  letter-spacing: 0.01em;
+}
+.next-steps p {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.contact-block-title {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 28px 0 12px;
+}
+.contact-card {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 22px 20px;
+  margin-bottom: 14px;
+  position: relative;
+}
+.contact-card.frances { border-color: rgba(201,169,110,0.30); }
+.contact-card.emkt { border-color: rgba(225,29,46,0.30); }
+.contact-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+.contact-card-logo {
+  width: 56px;
+  height: 56px;
+  background: var(--paper);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  flex-shrink: 0;
+}
+.contact-card-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.contact-card-titles { display: flex; flex-direction: column; gap: 3px; }
+.contact-card-org {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--paper);
+  letter-spacing: 0.01em;
+}
+.contact-card-role {
+  font-family: var(--f-head);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.contact-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px;
+  padding: 8px 0;
+  align-items: baseline;
+  border-top: 1px dashed var(--line);
+}
+.contact-row:first-of-type { border-top: none; padding-top: 0; }
+.contact-row-lbl {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.contact-row-val {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--paper);
+  word-break: break-word;
+}
+.contact-row-val.big {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0;
+}
+.contact-row-val a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+.contact-cta {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+}
+.contact-cta a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 12px;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: rgba(245,241,234,0.06);
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  text-decoration: none;
+}
+.contact-cta a.primary {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+}
+.contact-cta a svg { width: 14px; height: 14px; }
+
+.next-tagline {
+  margin-top: 28px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--cream);
+  text-align: center;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.next-tagline em {
+  display: block;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ────── footer-foot brand stamp ────── */
+.foot-brand {
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.foot-brand img { height: 28px; opacity: 0.8; }
+.foot-brand .x {
+  font-family: var(--f-display);
+  font-size: 20px;
+  color: var(--muted-2);
+}
+.foot-meta {
+  margin-top: 14px;
+  text-align: center;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  padding-bottom: 36px;
+}
+
+/* ────── inline helpers ────── */
+.hl { color: var(--brand-red); }
+.gold-hl { color: var(--gold); }
+
+/* ────── responsive guards for very small phones ────── */
+@media (max-width: 360px) {
+  .cover-title { font-size: 64px; }
+  h2.title { font-size: 38px; }
+  .price-figure { font-size: 72px; }
+  :root { --pad: 18px; }
+}
+
+@media (min-width: 640px) {
+  .app { box-shadow: 0 0 80px rgba(0,0,0,0.6); }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ────── sticky top bar ────── -->
+  <div class="topbar">
+    <div class="topbar-brand">
+      <img src="assets/logo-emkt-white.png" alt="E+ MKT">
+      <span class="sep"></span>
+      <span class="label">Rock in Rio 2026</span>
+    </div>
+    <span class="doc-num">PROP · 2026/01</span>
+  </div>
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 01 · COVER                                    -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="s-cover" id="capa">
+    <header class="cover-top">
+      <div class="cover-partner">
+        <span class="eyebrow muted">Apresentado por</span>
+        <img src="assets/logo-emkt-alt.png" alt="E+ MKT">
+      </div>
+      <div class="cover-partner right">
+        <span class="eyebrow muted">Em parceria com</span>
+        <img src="assets/logo-frances-trimmed.jpeg" alt="Camarotes do Francês">
+      </div>
+    </header>
+
+    <div class="cover-hero">
+      <div class="cover-meta">
+        <span>2026 · HOSPITALITY HUB</span>
+        <span class="dot">·</span>
+        <span>PROPOSTA</span>
+      </div>
+      <h1 class="cover-title">
+        Rock in<br>
+        <span class="red">Rio 2026</span>
+      </h1>
+      <span class="cover-sub-eyebrow">— Uma experiência exclusiva</span>
+      <p class="cover-sub-text">
+        Camarote VIP · Área VIP — uma vivência completa de imersão, emoção
+        e sofisticação no coração da Cidade do Rock.
+      </p>
+    </div>
+
+    <footer class="cover-bottom">
+      <div class="cover-bottom-col">
+        <span class="eyebrow">Datas</span>
+        <span class="cover-bottom-val">04·05·06·07<br>11·12·13 SET</span>
+      </div>
+      <div class="cover-bottom-col">
+        <span class="eyebrow">Local</span>
+        <span class="cover-bottom-val">Cidade do Rock<br>Rio de Janeiro</span>
+      </div>
+      <div class="cover-bottom-col">
+        <span class="eyebrow">Capacidade</span>
+        <span class="cover-bottom-val">100k / dia<br>7 dias</span>
+      </div>
+      <div class="cover-bottom-col">
+        <span class="eyebrow">Documento</span>
+        <span class="cover-bottom-val">Nº 2026/01<br>Confidencial</span>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 02 · SOBRE NÓS                                -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="sobre">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>02</strong> / 14</span>
+    <span class="eyebrow">— Sobre Nós</span>
+    <h2 class="title"><span class="hl">E+ MKT.</span><br>Visão 360° em marketing.</h2>
+    <p class="lede">
+      A <strong>E+ MKT</strong> trabalha com visão 360° para todos os seus clientes,
+      utilizando as principais ferramentas do marketing — propaganda, promoção,
+      incentivo e design. Esse mix permite soluções criativas e eficientes, que
+      transformam campanhas em resultados, briefing em lucro e clientes em parceiros.
+    </p>
+
+    <div style="margin-top:22px;">
+      <article class="about-card">
+        <div class="about-card-top"><span class="section-num">01</span><span class="eyebrow gold">Propaganda</span></div>
+        <div class="about-card-body"><p>Seja um cartão de visitas ou uma campanha institucional: desenvolvemos conceitos criativos que geram negócios.</p></div>
+      </article>
+      <article class="about-card">
+        <div class="about-card-top"><span class="section-num">02</span><span class="eyebrow gold">Promoção</span></div>
+        <div class="about-card-body"><p>Ativamos a sua marca antes, durante e depois da gôndola. Estratégia e planejamento criativo para aumentar suas vendas.</p></div>
+      </article>
+      <article class="about-card">
+        <div class="about-card-top"><span class="section-num">03</span><span class="eyebrow gold">Incentivo</span></div>
+        <div class="about-card-body"><p>Campanha, treinamento, capacitação, aplicação e premiação: para chegar lá, você passa por aqui.</p></div>
+      </article>
+      <article class="about-card">
+        <div class="about-card-top"><span class="section-num">04</span><span class="eyebrow gold">Design</span></div>
+        <div class="about-card-body"><p>Estratégia e planejamento para construir o universo da sua marca, gerando valor para o seu negócio e diálogo.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 03 · O EVENTO                                 -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="s-event" id="evento">
+    <div class="event-photo">
+      <img src="assets/photo-aerial-new.png" alt="Cidade do Rock">
+      <div class="event-photo-grad"></div>
+      <span class="num-tag"><strong>03</strong> / 14</span>
+    </div>
+    <div class="event-content">
+      <span class="eyebrow">— O Evento</span>
+      <h2 class="title">Uma nova era<br>de <span class="hl">experiências.</span></h2>
+      <p class="lede">
+        O Rock in Rio 2026 chega ainda mais grandioso, ultrapassando os limites
+        dos shows para oferecer uma vivência completa de imersão, emoção e
+        inovação na Cidade do Rock.
+      </p>
+      <p class="lede">
+        Com um novo <strong>Palco Mundo</strong>, a volta do <strong>The Flight</strong>
+        e o monumental <strong>New Dance Order</strong>, o festival reafirma seu
+        compromisso de criar momentos inesquecíveis.
+      </p>
+
+      <div class="event-stats">
+        <div class="event-stat">
+          <span class="event-stat-num">7</span>
+          <span class="event-stat-lbl">Dias de festival</span>
+        </div>
+        <div class="event-stat">
+          <span class="event-stat-num">3</span>
+          <span class="event-stat-lbl">Palcos principais <em>Mundo · Sunset · NDO</em></span>
+        </div>
+        <div class="event-stat">
+          <span class="event-stat-num">100<small>k</small></span>
+          <span class="event-stat-lbl">Pessoas por dia <em>Capacidade estimada</em></span>
+        </div>
+        <div class="event-stat">
+          <span class="event-stat-num">40<small>+</small></span>
+          <span class="event-stat-lbl">Atrações confirmadas <em>Line-up internacional</em></span>
+        </div>
+      </div>
+
+      <div class="event-strip">
+        <span class="event-strip-item"><span class="ft-dot"></span>04 SET</span>
+        <span class="event-strip-item"><span class="ft-dot"></span>05 SET</span>
+        <span class="event-strip-item"><span class="ft-dot"></span>06 SET</span>
+        <span class="event-strip-item"><span class="ft-dot"></span>07 SET</span>
+        <span class="event-strip-item"><span class="ft-dot"></span>11 SET</span>
+        <span class="event-strip-item"><span class="ft-dot"></span>12 SET</span>
+        <span class="event-strip-item"><span class="ft-dot"></span>13 SET</span>
+        <span class="event-strip-tail">Cidade do Rock · Rio de Janeiro</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 04 · LINE-UP                                  -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="lineup">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>04</strong> / 14</span>
+    <span class="eyebrow">— Line-up Confirmado</span>
+    <h2 class="title">Atrações <span class="hl">2026</span></h2>
+    <p class="lineup-note">Atrações e datas sujeitas a confirmação conforme divulgação oficial da organização.</p>
+
+    <article class="lineup-day">
+      <header class="lineup-day-head">
+        <span class="lineup-day-num">04</span>
+        <span class="lineup-day-mo">SET<br><em>SEXTA</em></span>
+      </header>
+      <ul class="lineup-acts">
+        <li class="headliner">Foo Fighters</li>
+        <li>Rise Against</li>
+        <li>The Hives</li>
+        <li>Capital Inicial</li>
+        <li class="more">Steve Angello · Cat Dealers</li>
+      </ul>
+    </article>
+
+    <article class="lineup-day">
+      <header class="lineup-day-head">
+        <span class="lineup-day-num">05</span>
+        <span class="lineup-day-mo">SET<br><em>SÁBADO</em></span>
+      </header>
+      <ul class="lineup-acts">
+        <li class="headliner">Avenged Sevenfold</li>
+        <li>Bring Me The Horizon</li>
+        <li>MGK</li>
+        <li>Sepultura</li>
+        <li class="more">James Hype · Victor Lou</li>
+      </ul>
+    </article>
+
+    <article class="lineup-day featured">
+      <header class="lineup-day-head">
+        <span class="lineup-day-num">06</span>
+        <span class="lineup-day-mo">SET<br><em>DOMINGO</em></span>
+      </header>
+      <ul class="lineup-acts">
+        <li class="headliner">Elton John</li>
+        <li>Gilberto Gil</li>
+        <li>Jon Batiste</li>
+        <li>Luísa Sonza</li>
+        <li class="more">Meduza · Sofi Tukker</li>
+      </ul>
+    </article>
+
+    <article class="lineup-day">
+      <header class="lineup-day-head">
+        <span class="lineup-day-num">07</span>
+        <span class="lineup-day-mo">SET<br><em>SEGUNDA</em></span>
+      </header>
+      <ul class="lineup-acts">
+        <li class="headliner">Stray Kids</li>
+        <li>Hwasa · NEXZ</li>
+        <li>Fatboy Slim</li>
+        <li>Jamiroquai</li>
+        <li class="more">PJ Morton · Os Garotin</li>
+      </ul>
+    </article>
+
+    <article class="lineup-day featured">
+      <header class="lineup-day-head">
+        <span class="lineup-day-num">11</span>
+        <span class="lineup-day-mo">SET<br><em>SEXTA</em></span>
+      </header>
+      <ul class="lineup-acts">
+        <li class="headliner">Maroon 5</li>
+        <li>Demi Lovato</li>
+        <li>J Balvin</li>
+        <li>Pedro Sampaio</li>
+        <li class="more">Neelix &amp; Vegas · Omiki</li>
+      </ul>
+    </article>
+
+    <article class="lineup-day">
+      <header class="lineup-day-head">
+        <span class="lineup-day-num">12</span>
+        <span class="lineup-day-mo">SET<br><em>SÁBADO</em></span>
+      </header>
+      <ul class="lineup-acts">
+        <li class="headliner">Mumford &amp; Sons</li>
+        <li>João Gomes</li>
+        <li>Gilsons · Criolo</li>
+        <li>Alok &amp; Family</li>
+        <li class="more">Timbalada · Priscila Senna</li>
+      </ul>
+    </article>
+
+    <article class="lineup-day">
+      <header class="lineup-day-head">
+        <span class="lineup-day-num">13</span>
+        <span class="lineup-day-mo">SET<br><em>DOMINGO</em></span>
+      </header>
+      <ul class="lineup-acts">
+        <li class="headliner">A Divulgar</li>
+        <li>John Summit</li>
+        <li>Illusionize</li>
+        <li>Dennis · Suel</li>
+        <li class="more">Roddy Lima · Marvvila</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 05 · ÁREA VIP                                 -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="area-vip">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>05</strong> / 14</span>
+    <span class="eyebrow">— Área VIP</span>
+    <h2 class="title">Uma experiência <span class="hl">exclusiva</span> no coração do festival.</h2>
+    <p class="lede">
+      Acesso premium com vista privilegiada para o Palco Mundo e Palco Sunset,
+      ambiente coberto e climatizado, gastronomia assinada por renomados chefs
+      e bebidas all inclusive durante todo o evento.
+    </p>
+
+    <div style="margin-top:18px;">
+      <div class="vip-benefit">
+        <div class="vip-benefit-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16 L16 4 L28 16 L28 28 L4 28 Z"/><path d="M12 28 L12 20 L20 20 L20 28"/></svg>
+        </div>
+        <div class="vip-benefit-body">
+          <span class="vip-benefit-top">01 · Acesso premium</span>
+          <h3>Ingresso Área VIP</h3>
+          <p>Acesso exclusivo à área premium do festival com vista privilegiada para o Palco Mundo e Palco Sunset.</p>
+        </div>
+      </div>
+      <div class="vip-benefit">
+        <div class="vip-benefit-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="16" r="5"/><path d="M16 4 L16 8 M16 24 L16 28 M4 16 L8 16 M24 16 L28 16 M7 7 L10 10 M22 22 L25 25 M22 10 L25 7 M7 25 L10 22"/></svg>
+        </div>
+        <div class="vip-benefit-body">
+          <span class="vip-benefit-top">02 · Conforto</span>
+          <h3>Ambiente Climatizado</h3>
+          <p>Espaço coberto com temperatura controlada — todo o conforto para curtir o festival do início ao fim.</p>
+        </div>
+      </div>
+      <div class="vip-benefit">
+        <div class="vip-benefit-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 10 L8 22 C8 25 11 28 16 28 C21 28 24 25 24 22 L24 10 Z"/><path d="M8 10 L24 10 M16 10 L16 6 L20 4"/></svg>
+        </div>
+        <div class="vip-benefit-body">
+          <span class="vip-benefit-top">03 · Gastronomia</span>
+          <h3>Buffet Premium</h3>
+          <p>Experiência gastronômica única assinada por renomados chefs, com cardápio elaborado para o evento.</p>
+        </div>
+      </div>
+      <div class="vip-benefit">
+        <div class="vip-benefit-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4 L22 4 L20 16 C20 18 18 20 16 20 C14 20 12 18 12 16 Z"/><path d="M16 20 L16 28 M12 28 L20 28"/></svg>
+        </div>
+        <div class="vip-benefit-body">
+          <span class="vip-benefit-top">04 · Open bar</span>
+          <h3>Bebidas All Inclusive</h3>
+          <p>Open bar completo durante toda a permanência no evento — drinks, cervejas e bebidas non-alcoholic.</p>
+        </div>
+      </div>
+      <div class="vip-benefit">
+        <div class="vip-benefit-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20 L8 20 L10 16 L22 16 L24 20 L28 20 L28 24 L4 24 Z"/><circle cx="10" cy="24" r="2"/><circle cx="22" cy="24" r="2"/></svg>
+        </div>
+        <div class="vip-benefit-body">
+          <span class="vip-benefit-top">05 · Mobilidade</span>
+          <h3>Transfer Oficial</h3>
+          <p>Shuttle exclusivo Meeting Point ↔ Cidade do Rock a partir das 14h e retornando até 1h após o último show.</p>
+        </div>
+      </div>
+      <div class="vip-benefit">
+        <div class="vip-benefit-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="13" r="6"/><path d="M6 28 C6 22 10 19 16 19 C22 19 26 22 26 28"/></svg>
+        </div>
+        <div class="vip-benefit-body">
+          <span class="vip-benefit-top">06 · Recepção</span>
+          <h3>Meeting Point Oficial</h3>
+          <p>Ponto de encontro exclusivo para convidados VIP — local confirmado pela organização do festival.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 06 · VALOR ÁREA VIP                           -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="valor-area">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>06</strong> / 14</span>
+    <span class="eyebrow">— Ingresso Área VIP</span>
+    <h2 class="title">Valor<br>por pessoa.</h2>
+    <p class="lede">
+      Investimento individual para a Área VIP do Rock in Rio 2026.
+      Cada ingresso garante a experiência completa: open bar premium,
+      gastronomia assinada e acesso exclusivo.
+    </p>
+
+    <div class="price-card">
+      <span class="price-card-eyebrow">Valor por pessoa · por dia</span>
+      <div class="price-card-amount">
+        <span class="price-currency">R$</span>
+        <span class="price-figure">4.500</span>
+        <span class="price-cents">,00</span>
+      </div>
+      <div class="price-card-mini">
+        <span>Por ingresso</span><span class="dot">·</span>
+        <span>Por dia</span><span class="dot">·</span>
+        <span>All inclusive</span>
+      </div>
+      <div class="price-card-foot">
+        <span class="ft-dot"></span>
+        <span>Valores sujeitos a impostos e taxas. Sujeitos a alteração sem aviso prévio conforme proximidade da data do evento.</span>
+      </div>
+    </div>
+
+    <ul class="price-list">
+      <li><span class="ft-dot"></span>Vale para 1 (um) dia de festival</li>
+      <li><span class="ft-dot"></span>All inclusive — bebidas e alimentação</li>
+      <li><span class="ft-dot"></span>Transfer oficial Meeting Point ↔ Cidade do Rock</li>
+      <li><span class="ft-dot"></span>Guarda-volumes incluso · Abertura às 14h</li>
+    </ul>
+
+    <div class="price-warn">
+      <span class="warn-icon">!</span>
+      <p><strong>Atenção · Política de marca.</strong> Não é permitida a exposição de marca com materiais gráficos ou brindes na Área VIP.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 07 · CAMAROTE VIP · INTRO                     -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="s-camarote-intro" id="camarote">
+    <div class="camarote-photo">
+      <img src="assets/photo-exterior-new.png" alt="Camarote VIP">
+      <div class="camarote-photo-grad"></div>
+      <span class="num-tag"><strong>07</strong> / 14</span>
+    </div>
+    <div class="camarote-content">
+      <span class="eyebrow">— Camarote VIP</span>
+      <h2 class="title">Mais exclusivo da <span class="hl">Cidade do Rock.</span></h2>
+      <p class="lede">
+        Espaço privativo para sua empresa, no ponto mais estratégico da
+        Cidade do Rock, com vista exclusiva para o Palco Principal. Uma
+        experiência completa para hospedar clientes, parceiros e
+        colaboradores com sofisticação e conforto incomparáveis.
+      </p>
+
+      <div class="camarote-intro-stats">
+        <div class="cstat">
+          <span class="num">35</span>
+          <span class="lbl">Capacidade máx <em>30 a 35 convidados</em></span>
+        </div>
+        <div class="cstat">
+          <span class="num">7</span>
+          <span class="lbl">Dias <em>de festival</em></span>
+        </div>
+        <div class="cstat">
+          <span class="num">100<small>%</small></span>
+          <span class="lbl">All inclusive <em>open bar &amp; catering</em></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 08 · CAMAROTE BENEFÍCIOS                      -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="beneficios">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>08</strong> / 14</span>
+    <span class="eyebrow">— Camarote · Benefícios Inclusos</span>
+    <h2 class="title">Tudo o que está <span class="hl">incluso</span>.</h2>
+
+    <div style="margin-top:18px;">
+      <article class="cbenefit big">
+        <span class="cbenefit-num">01 · Espaço privativo</span>
+        <h3>Camarote Exclusivo</h3>
+        <p>Espaço privativo para <strong>30 a 35 pessoas</strong>, com <strong>banheiro exclusivo</strong> e ambientação premium durante todos os dias contratados.</p>
+        <div class="cbenefit-tag">30–35 pax · banheiro próprio</div>
+      </article>
+      <article class="cbenefit">
+        <span class="cbenefit-num">02 · All inclusive</span>
+        <h3>Open Bar &amp; Catering</h3>
+        <p>All inclusive durante todo o evento — bebidas e gastronomia premium servidas dentro do camarote.</p>
+      </article>
+      <article class="cbenefit">
+        <span class="cbenefit-num">03 · Vista privilegiada</span>
+        <h3>Vista Exclusiva</h3>
+        <p>Posição privilegiada com vista direta para o Palco Principal — você acompanha cada apresentação no melhor ângulo.</p>
+      </article>
+      <article class="cbenefit">
+        <span class="cbenefit-num">04 · Mobilidade</span>
+        <h3>Shuttle Exclusivo</h3>
+        <p>Transfer dedicado entre o Meeting Point e a Cidade do Rock — ida e retorno garantidos com conforto.</p>
+      </article>
+      <article class="cbenefit">
+        <span class="cbenefit-num">05 · Branding</span>
+        <h3>Itens Personalizáveis</h3>
+        <p>Decoração customizada com a identidade da sua marca. <em>Sujeito à aprovação da Rock World.</em></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 09 · GALERIA                                  -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="galeria">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>09</strong> / 14</span>
+    <span class="eyebrow">— Veja o Espaço</span>
+    <h2 class="title">Conheça o <span class="hl">Camarote VIP.</span></h2>
+
+    <div style="margin-top:18px;">
+      <figure class="gallery-fig main">
+        <img src="assets/photo-aerial-new.png" alt="Vista aérea da Cidade do Rock">
+        <figcaption><span class="gallery-fig-num">01</span><span>Vista aérea · Cidade do Rock</span></figcaption>
+      </figure>
+      <figure class="gallery-fig">
+        <img src="assets/photo-exterior-new.png" alt="Estrutura externa do Camarote VIP">
+        <figcaption><span class="gallery-fig-num">02</span><span>Estrutura externa · Camarote</span></figcaption>
+      </figure>
+      <figure class="gallery-fig">
+        <img src="assets/photo-lounge-new.png" alt="Área comum do Camarote VIP">
+        <figcaption><span class="gallery-fig-num">03</span><span>Área comum · Ambiente interno</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 10 · INVESTIMENTO                             -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="investimento">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>10</strong> / 14</span>
+    <span class="eyebrow">— Camarote VIP · Tabela de Investimento</span>
+    <h2 class="title">Escolha o tamanho do seu <span class="hl">camarote.</span></h2>
+    <p class="lede">
+      Cálculo base: <strong>R$ 150.000</strong> (camarote) <span class="hl">+</span> <strong>R$ 4.500</strong> por ingresso individual.
+    </p>
+
+    <div style="margin-top:24px;">
+      <article class="invest-card">
+        <header class="invest-card-head">
+          <span class="invest-card-num">10</span>
+          <span class="invest-card-lbl">Pessoas</span>
+        </header>
+        <div class="invest-row"><span class="rl">Camarote</span><span class="rv">R$ 150.000</span></div>
+        <div class="invest-row"><span class="rl">10 ingressos VIP</span><span class="rv">R$ 45.000</span></div>
+        <div class="invest-row total"><span class="rl">Total</span><span class="rv">R$ 195.000</span></div>
+        <footer class="invest-card-foot">
+          <span class="pp-lbl">Por pessoa</span>
+          <span class="pp-val">R$ 19.500</span>
+        </footer>
+      </article>
+
+      <article class="invest-card featured">
+        <div class="invest-flag">Mais procurado</div>
+        <header class="invest-card-head">
+          <span class="invest-card-num">20</span>
+          <span class="invest-card-lbl">Pessoas</span>
+        </header>
+        <div class="invest-row"><span class="rl">Camarote</span><span class="rv">R$ 150.000</span></div>
+        <div class="invest-row"><span class="rl">20 ingressos VIP</span><span class="rv">R$ 90.000</span></div>
+        <div class="invest-row total"><span class="rl">Total</span><span class="rv">R$ 240.000</span></div>
+        <footer class="invest-card-foot">
+          <span class="pp-lbl">Por pessoa</span>
+          <span class="pp-val">R$ 12.000</span>
+        </footer>
+      </article>
+
+      <article class="invest-card">
+        <header class="invest-card-head">
+          <span class="invest-card-num">30</span>
+          <span class="invest-card-lbl">Pessoas</span>
+        </header>
+        <div class="invest-row"><span class="rl">Camarote</span><span class="rv">R$ 150.000</span></div>
+        <div class="invest-row"><span class="rl">30 ingressos VIP</span><span class="rv">R$ 135.000</span></div>
+        <div class="invest-row total"><span class="rl">Total</span><span class="rv">R$ 285.000</span></div>
+        <footer class="invest-card-foot">
+          <span class="pp-lbl">Por pessoa</span>
+          <span class="pp-val">R$ 9.500</span>
+        </footer>
+      </article>
+    </div>
+
+    <div class="invest-note">
+      <span class="invest-note-icon">i</span>
+      <p><strong>Outros formatos disponíveis.</strong> Números diferentes de 10, 20 ou 30 pessoas podem ser acomodados — capacidade máxima de <strong>35 pax</strong> — mediante nova precificação individual sob consulta.</p>
+    </div>
+    <div class="invest-note">
+      <span class="invest-note-icon">i</span>
+      <p><strong>Staffs externos.</strong> Consultores, fotógrafos e demais staffs externos contam como convidados e devem adquirir ingresso. Valores sujeitos a impostos e taxas.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 11 · DISPONIBILIDADE                          -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="disponibilidade">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>11</strong> / 14</span>
+    <span class="eyebrow">— Camarote VIP · Disponibilidade Atual</span>
+    <h2 class="title">Datas com vagas <span class="hl">ainda disponíveis.</span></h2>
+    <p class="lede">
+      Alguns dias já estão com os espaços esgotados. Veja as datas que ainda
+      contam com camarotes disponíveis — reservas confirmadas em ordem de chegada.
+    </p>
+
+    <div class="avail-summary">
+      <div class="avail-summary-card">
+        <div class="avail-summary-num">10</div>
+        <div class="avail-summary-lbl">Camarotes<br>disponíveis</div>
+      </div>
+      <div class="avail-summary-card muted">
+        <div class="avail-summary-num">2</div>
+        <div class="avail-summary-lbl">Datas<br>esgotadas</div>
+      </div>
+    </div>
+
+    <article class="avail-day">
+      <div class="avail-day-head">
+        <span class="avail-day-num">04</span>
+        <span class="avail-day-mo">SET<em>SEXTA</em></span>
+      </div>
+      <span class="avail-day-act">Foo Fighters</span>
+      <span class="avail-badge open"><span class="avail-dot"></span>2 vagas</span>
+    </article>
+    <article class="avail-day">
+      <div class="avail-day-head">
+        <span class="avail-day-num">05</span>
+        <span class="avail-day-mo">SET<em>SÁBADO</em></span>
+      </div>
+      <span class="avail-day-act">Avenged Sevenfold</span>
+      <span class="avail-badge open"><span class="avail-dot"></span>2 vagas</span>
+    </article>
+    <article class="avail-day">
+      <div class="avail-day-head">
+        <span class="avail-day-num">06</span>
+        <span class="avail-day-mo">SET<em>DOMINGO</em></span>
+      </div>
+      <span class="avail-day-act tbc">A confirmar</span>
+      <span class="avail-badge open"><span class="avail-dot"></span>2 vagas</span>
+    </article>
+    <article class="avail-day sold">
+      <div class="avail-day-head">
+        <span class="avail-day-num">07</span>
+        <span class="avail-day-mo">SET<em>SEGUNDA</em></span>
+      </div>
+      <span class="avail-day-act">—</span>
+      <span class="avail-badge sold">Esgotado</span>
+    </article>
+    <article class="avail-day">
+      <div class="avail-day-head">
+        <span class="avail-day-num">11</span>
+        <span class="avail-day-mo">SET<em>SEXTA</em></span>
+      </div>
+      <span class="avail-day-act">Stray Kids</span>
+      <span class="avail-badge open"><span class="avail-dot"></span>2 vagas</span>
+    </article>
+    <article class="avail-day sold">
+      <div class="avail-day-head">
+        <span class="avail-day-num">12</span>
+        <span class="avail-day-mo">SET<em>SÁBADO</em></span>
+      </div>
+      <span class="avail-day-act">—</span>
+      <span class="avail-badge sold">Esgotado</span>
+    </article>
+    <article class="avail-day">
+      <div class="avail-day-head">
+        <span class="avail-day-num">13</span>
+        <span class="avail-day-mo">SET<em>DOMINGO</em></span>
+      </div>
+      <span class="avail-day-act">Twenty One Pilots</span>
+      <span class="avail-badge open"><span class="avail-dot"></span>2 vagas</span>
+    </article>
+
+    <div class="avail-foot-note">
+      <span class="ft-dot"></span>
+      <p>Snapshot atualizado em <strong>maio · 2026</strong>. Disponibilidade pode mudar a qualquer momento conforme novas reservas — recomendamos confirmação imediata para garantir a data preferida.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 12 · PERSONALIZAÇÃO                           -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="personalizacao">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>12</strong> / 14</span>
+    <span class="eyebrow">— Personalização do Camarote</span>
+    <h2 class="title">Leve a identidade da sua <span class="hl">marca</span> para o festival.</h2>
+    <p class="lede">
+      Cinco pontos de personalização disponíveis no camarote, para marcas que
+      desejam imprimir sua presença em uma experiência exclusiva.
+    </p>
+
+    <div style="margin-top:18px;">
+      <article class="custom-item">
+        <span class="custom-num">01</span>
+        <h3>Quadro de Marca</h3>
+        <p>1 quadro com aplicação de marca em moldura de madeira — dimensão máxima <strong>1,80m × 1,20m</strong>.</p>
+      </article>
+      <article class="custom-item">
+        <span class="custom-num">02</span>
+        <h3>Display na Entrada</h3>
+        <p>1 display <strong>A4</strong> na porta de entrada do camarote com identidade visual da marca.</p>
+      </article>
+      <article class="custom-item">
+        <span class="custom-num">03</span>
+        <h3>Almofadas Personalizadas</h3>
+        <p>5 almofadas com personalização da marca distribuídas pelo espaço do camarote.</p>
+      </article>
+      <article class="custom-item">
+        <span class="custom-num">04</span>
+        <h3>Display Autoportante</h3>
+        <p>Display iluminado (ou não) apoiado sobre o balcão — dimensão máxima <strong>0,80m × 0,50m</strong>.</p>
+      </article>
+      <article class="custom-item">
+        <span class="custom-num">05</span>
+        <h3>Composição Floral</h3>
+        <p>Arranjo floral conforme preferência e identidade visual da marca contratante.</p>
+      </article>
+    </div>
+
+    <div class="custom-foot">
+      <span class="ft-dot"></span>
+      <p>Todos os itens personalizáveis devem passar pela aprovação da <strong>Rock World</strong>. Exclusivo para marcas parceiras do festival.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 13 · SERVIÇOS ADICIONAIS                      -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="servicos">
+    <div class="bg-grain"></div>
+    <span class="num-tag"><strong>13</strong> / 14</span>
+    <span class="eyebrow">— Serviços Adicionais</span>
+    <h2 class="title">Complete a experiência dos seus <span class="hl">convidados</span>.</h2>
+    <p class="lede" style="font-style:italic;">Disponíveis sob consulta · valores tratados caso a caso.</p>
+
+    <div style="margin-top:18px;">
+      <article class="service-item"><span class="service-num">01</span><h3>Transporte Aéreo</h3><p>Voos fretados e helicóptero para chegada VIP ao evento.</p></article>
+      <article class="service-item"><span class="service-num">02</span><h3>Hospedagem</h3><p>Hotéis e resorts parceiros próximos à Cidade do Rock.</p></article>
+      <article class="service-item"><span class="service-num">03</span><h3>Meeting Point Exclusivo</h3><p>Ponto de encontro dedicado para o grupo, antes do festival.</p></article>
+      <article class="service-item"><span class="service-num">04</span><h3>Transfer Executivo</h3><p>Veículos executivos e blindados — MP &gt; Cidade do Rock &gt; MP.</p></article>
+      <article class="service-item"><span class="service-num">05</span><h3>Brindes Personalizados</h3><p>Kits e lembranças customizadas para os convidados.</p></article>
+      <article class="service-item"><span class="service-num">06</span><h3>Seguro Viagem</h3><p>Cobertura completa para todos os participantes.</p></article>
+      <article class="service-item"><span class="service-num">07</span><h3>City Tour</h3><p>Passeios guiados pelo Rio antes do festival.</p></article>
+      <article class="service-item"><span class="service-num">08</span><h3>RSVP &amp; Gestão</h3><p>Plataforma de confirmação de presença automatizada.</p></article>
+    </div>
+
+    <div class="services-foot">
+      <span class="ft-dot"></span>
+      <p>Para acesso de veículos ao festival, a contratação deve ser feita obrigatoriamente por nosso intermédio.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 14 · PRÓXIMOS PASSOS & CONTATO                -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="s-next" id="contato">
+    <span class="num-tag"><strong>14</strong> / 14</span>
+    <span class="eyebrow">— Próximos Passos</span>
+    <h2 class="title">Vamos criar uma experiência <span class="hl">inesquecível?</span></h2>
+
+    <ol class="next-steps">
+      <li>
+        <span class="next-step-num">01</span>
+        <div>
+          <h4>Entre em contato</h4>
+          <p>Fale com a nossa equipe pelos canais abaixo.</p>
+        </div>
+      </li>
+      <li>
+        <span class="next-step-num">02</span>
+        <div>
+          <h4>Defina o formato</h4>
+          <p>Número de participantes, datas e nível de personalização desejado.</p>
+        </div>
+      </li>
+      <li>
+        <span class="next-step-num">03</span>
+        <div>
+          <h4>Receba a proposta final</h4>
+          <p>Enviamos a proposta personalizada com valores definitivos.</p>
+        </div>
+      </li>
+      <li>
+        <span class="next-step-num">04</span>
+        <div>
+          <h4>Garanta seu espaço</h4>
+          <p>Formalize a reserva e prepare-se para o festival.</p>
+        </div>
+      </li>
+    </ol>
+
+    <!-- Contato Camarote do Francês -->
+    <div class="contact-block-title">Contatos</div>
+
+    <div class="contact-card frances">
+      <div class="contact-card-head">
+        <div class="contact-card-logo">
+          <img src="assets/logo-frances-trimmed.jpeg" alt="Camarotes do Francês">
+        </div>
+        <div class="contact-card-titles">
+          <span class="contact-card-org">Camarotes do Francês</span>
+          <span class="contact-card-role">Hospitality Partner</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-lbl">Responsável</span>
+        <span class="contact-row-val">Alexis de Vaulx</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-lbl">WhatsApp</span>
+        <span class="contact-row-val big"><a href="https://wa.me/5521981254099">+55 21 98125-4099</a></span>
+      </div>
+      <div class="contact-cta">
+        <a class="primary" href="https://wa.me/5521981254099">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1 2.7.1.2 1.8 2.7 4.3 3.8.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.2-.1-.5-.3zM12 3C7 3 3 7 3 12c0 1.6.4 3.1 1.2 4.4L3 21l4.7-1.2c1.3.7 2.7 1 4.3 1 5 0 9-4 9-9s-4-9-9-9zm0 16.5c-1.4 0-2.7-.4-3.9-1l-.3-.2-2.8.7.7-2.7-.2-.3c-.7-1.2-1.1-2.5-1.1-3.9 0-4.2 3.4-7.6 7.6-7.6 4.2 0 7.6 3.4 7.6 7.6 0 4.2-3.4 7.4-7.6 7.4z"/></svg>
+          WhatsApp
+        </a>
+        <a href="tel:+5521981254099">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </div>
+
+    <!-- Contato E+ MKT -->
+    <div class="contact-card emkt">
+      <div class="contact-card-head">
+        <div class="contact-card-logo">
+          <img src="assets/logo-emkt-alt.png" alt="E+ MKT">
+        </div>
+        <div class="contact-card-titles">
+          <span class="contact-card-org">E+ MKT</span>
+          <span class="contact-card-role">Agência · Visão 360°</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-lbl">Responsável</span>
+        <span class="contact-row-val">Leonardo Castanho</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-lbl">E-mail</span>
+        <span class="contact-row-val" style="font-size:13px;"><a href="mailto:leocastanho@emaismkt.com.br">leocastanho@emaismkt.com.br</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-lbl">WhatsApp</span>
+        <span class="contact-row-val big"><a href="https://wa.me/5521981150216">+55 21 98115-0216</a></span>
+      </div>
+      <div class="contact-cta">
+        <a class="primary" href="https://wa.me/5521981150216">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1 2.7.1.2 1.8 2.7 4.3 3.8.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.2-.1-.5-.3zM12 3C7 3 3 7 3 12c0 1.6.4 3.1 1.2 4.4L3 21l4.7-1.2c1.3.7 2.7 1 4.3 1 5 0 9-4 9-9s-4-9-9-9zm0 16.5c-1.4 0-2.7-.4-3.9-1l-.3-.2-2.8.7.7-2.7-.2-.3c-.7-1.2-1.1-2.5-1.1-3.9 0-4.2 3.4-7.6 7.6-7.6 4.2 0 7.6 3.4 7.6 7.6 0 4.2-3.4 7.4-7.6 7.4z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:leocastanho@emaismkt.com.br">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          E-mail
+        </a>
+      </div>
+    </div>
+
+    <p class="next-tagline">
+      <em>Obrigado pela atenção.</em>
+      Aguardamos seu retorno para construir uma experiência à altura da sua marca no Rock in Rio 2026.
+    </p>
+
+    <div class="foot-brand">
+      <img src="assets/logo-emkt-white.png" alt="E+ MKT">
+      <span class="x">×</span>
+      <img src="assets/logo-frances-trimmed.jpeg" alt="Camarotes do Francês" style="background:var(--paper);padding:4px;border-radius:3px;">
+    </div>
+    <div class="foot-meta">
+      Proposta nº 2026 / 01 · Setembro 2026 · Confidencial
+    </div>
+
+  </section>
+
+</div>
+
+<template id="__bundler_thumbnail" data-bg-color="#0a0a0c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0a0a0c"/>
+    <text x="600" y="380" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="160" fill="#e11d2e" letter-spacing="-2">ROCK IN RIO</text>
+    <text x="600" y="450" text-anchor="middle" font-family="Archivo, sans-serif" font-size="36" fill="#f5f1ea" letter-spacing="6">2026 · MOBILE</text>
+    <line x1="500" y1="490" x2="700" y2="490" stroke="#c9a96e" stroke-width="2"/>
+  </svg>
+</template>
+
+<script>
+  // Sticky progress bar
+  (function() {
+    const bar = document.getElementById('progressBar');
+    function update() {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+    document.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
+
+</body>
+</html>

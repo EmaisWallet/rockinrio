@@ -1,0 +1,572 @@
+/* =============================================================
+   Slide transitions — subtle, editorial, presentation-grade
+   =============================================================
+   The deck-stage component just toggles [data-deck-active] on
+   the visible slide. This file layers in:
+
+     1. A slide-level crossfade with a hint of vertical motion.
+     2. Per-element reveals (eyebrow → title → body → cards)
+        that re-play every time a slide becomes active —
+        forward AND back — so navigation always feels alive.
+     3. Slide-specific touches (cover, photo slides, line-up
+        stagger, etc).
+
+   Light-DOM rules win the cascade over shadow-DOM ::slotted()
+   defaults at equal specificity, so we can safely override the
+   deck's hard opacity / visibility flip with our own animated
+   states. Rail thumbnail clones live in their own shadow DOM
+   and never receive [data-deck-active], so none of these
+   animations leak into the rail.
+   ============================================================= */
+
+
+/* ─── 1. Slide-level crossfade ─────────────────────────────── */
+
+deck-stage > section {
+  visibility: visible;
+  opacity: 0;
+  transform: translateY(14px) scale(1.006);
+  filter: blur(2px);
+  transition:
+    opacity 520ms cubic-bezier(.4, 0, .2, 1),
+    transform 720ms cubic-bezier(.2, .7, .2, 1),
+    filter   520ms cubic-bezier(.4, 0, .2, 1);
+  will-change: opacity, transform, filter;
+}
+
+deck-stage > section[data-deck-active] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+
+/* ─── 2. Reveal keyframes ──────────────────────────────────── */
+
+@keyframes deck-rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes deck-rise-sm {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes deck-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes deck-fade-late {
+  /* hold invisible for the first third so chrome lands AFTER
+     the headline has finished rising. */
+  0%, 35% { opacity: 0; }
+  100%    { opacity: 0.9; }
+}
+
+@keyframes deck-photo-emerge {
+  /* Photos drift out of a soft zoom-in so the backdrop has
+     motion without distracting from the foreground type. */
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+    filter: blur(8px) saturate(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes deck-letterbreath {
+  /* Headlines settle into final tracking — gives a subtle
+     "snap into place" feel without literal motion clutter. */
+  from {
+    opacity: 0;
+    letter-spacing: 0.04em;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: inherit;
+    transform: none;
+  }
+}
+
+@keyframes deck-slide-in-left {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes deck-strip-wipe {
+  /* For thin horizontal rules / strips — they sweep in. */
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+
+/* ─── 3. Shared chrome reveals (every slide) ──────────────── */
+
+[data-deck-active] .slide-num {
+  animation: deck-fade-late 900ms 350ms both ease-out;
+}
+
+[data-deck-active] .slide-footer {
+  animation: deck-fade-late 900ms 400ms both ease-out;
+}
+
+[data-deck-active] .bg-grain {
+  animation: deck-fade 800ms both ease-out;
+}
+
+
+/* ─── 4. SLIDE 01 · Cover ─────────────────────────────────── */
+
+.s-cover[data-deck-active] .cover-bg {
+  animation: deck-photo-emerge 1400ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-cover[data-deck-active] .cover-vignette,
+.s-cover[data-deck-active] .cover-noise {
+  animation: deck-fade 1200ms 200ms both ease-out;
+}
+
+.s-cover[data-deck-active] .cover-partner {
+  animation: deck-rise-sm 700ms 250ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-cover[data-deck-active] .cover-partner.right {
+  animation-delay: 380ms;
+}
+
+.s-cover[data-deck-active] .cover-meta {
+  animation: deck-rise-sm 700ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+
+.s-cover[data-deck-active] .cover-title-row:nth-child(1) {
+  animation: deck-letterbreath 900ms 420ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-cover[data-deck-active] .cover-title-row:nth-child(2) {
+  animation: deck-letterbreath 900ms 560ms both cubic-bezier(.2,.7,.2,1);
+}
+
+.s-cover[data-deck-active] .cover-sub {
+  animation: deck-rise-sm 800ms 820ms both cubic-bezier(.2,.7,.2,1);
+}
+
+.s-cover[data-deck-active] .cover-bottom > * {
+  animation: deck-rise-sm 600ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-cover[data-deck-active] .cover-bottom > *:nth-child(1) { animation-delay: 980ms; }
+.s-cover[data-deck-active] .cover-bottom > *:nth-child(2) { animation-delay: 1060ms; }
+.s-cover[data-deck-active] .cover-bottom > *:nth-child(3) { animation-delay: 1140ms; }
+.s-cover[data-deck-active] .cover-bottom > *:nth-child(4) { animation-delay: 1220ms; }
+
+
+/* ─── 5. SLIDE 02 · Sobre Nós ────────────────────────────── */
+
+.s-about[data-deck-active] .about-head .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-about[data-deck-active] .about-title {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-about[data-deck-active] .about-lede {
+  animation: deck-rise-sm 700ms 480ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-about[data-deck-active] .about-grid .about-card {
+  animation: deck-rise 700ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-about[data-deck-active] .about-grid .about-card:nth-child(1) { animation-delay: 600ms; }
+.s-about[data-deck-active] .about-grid .about-card:nth-child(2) { animation-delay: 700ms; }
+.s-about[data-deck-active] .about-grid .about-card:nth-child(3) { animation-delay: 800ms; }
+.s-about[data-deck-active] .about-grid .about-card:nth-child(4) { animation-delay: 900ms; }
+
+
+/* ─── 6. SLIDE 03 · O Evento ─────────────────────────────── */
+
+.s-event[data-deck-active] .event-photo img {
+  animation: deck-photo-emerge 1400ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-event[data-deck-active] .event-photo-grad {
+  animation: deck-fade 1000ms 300ms both ease-out;
+}
+.s-event[data-deck-active] .event-left .eyebrow {
+  animation: deck-rise-sm 600ms 250ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-event[data-deck-active] .event-title {
+  animation: deck-rise 800ms 350ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-event[data-deck-active] .event-left .event-lede {
+  animation: deck-rise-sm 700ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-event[data-deck-active] .event-left .event-lede:nth-of-type(1) { animation-delay: 550ms; }
+.s-event[data-deck-active] .event-left .event-lede:nth-of-type(2) { animation-delay: 680ms; }
+
+.s-event[data-deck-active] .event-stats .event-stat {
+  animation: deck-rise 700ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-event[data-deck-active] .event-stats .event-stat:nth-child(1) { animation-delay: 500ms; }
+.s-event[data-deck-active] .event-stats .event-stat:nth-child(2) { animation-delay: 600ms; }
+.s-event[data-deck-active] .event-stats .event-stat:nth-child(3) { animation-delay: 700ms; }
+.s-event[data-deck-active] .event-stats .event-stat:nth-child(4) { animation-delay: 800ms; }
+
+.s-event[data-deck-active] .event-strip {
+  animation: deck-strip-wipe 900ms 800ms both cubic-bezier(.4,0,.2,1);
+}
+
+
+/* ─── 7. SLIDE 04 · Line-up ──────────────────────────────── */
+
+.s-lineup[data-deck-active] .lineup-head .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-lineup[data-deck-active] .lineup-title {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-lineup[data-deck-active] .lineup-note {
+  animation: deck-fade 800ms 600ms both ease-out;
+}
+.s-lineup[data-deck-active] .lineup-grid .lineup-day {
+  animation: deck-rise 700ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-lineup[data-deck-active] .lineup-grid .lineup-day:nth-child(1) { animation-delay: 500ms; }
+.s-lineup[data-deck-active] .lineup-grid .lineup-day:nth-child(2) { animation-delay: 580ms; }
+.s-lineup[data-deck-active] .lineup-grid .lineup-day:nth-child(3) { animation-delay: 660ms; }
+.s-lineup[data-deck-active] .lineup-grid .lineup-day:nth-child(4) { animation-delay: 740ms; }
+.s-lineup[data-deck-active] .lineup-grid .lineup-day:nth-child(5) { animation-delay: 820ms; }
+.s-lineup[data-deck-active] .lineup-grid .lineup-day:nth-child(6) { animation-delay: 900ms; }
+.s-lineup[data-deck-active] .lineup-grid .lineup-day:nth-child(7) { animation-delay: 980ms; }
+
+
+/* ─── 8. SLIDE 05 · Área VIP ─────────────────────────────── */
+
+.s-vip[data-deck-active] [class*="-head"] .eyebrow,
+.s-vip[data-deck-active] .vip-head .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-vip[data-deck-active] h2 {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-vip[data-deck-active] .vip-lede,
+.s-vip[data-deck-active] [class*="-lede"] {
+  animation: deck-rise-sm 700ms 480ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-vip[data-deck-active] [class*="-grid"] > *,
+.s-vip[data-deck-active] [class*="-list"] > * {
+  animation: deck-rise 650ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-vip[data-deck-active] [class*="-grid"] > *:nth-child(1),
+.s-vip[data-deck-active] [class*="-list"] > *:nth-child(1) { animation-delay: 550ms; }
+.s-vip[data-deck-active] [class*="-grid"] > *:nth-child(2),
+.s-vip[data-deck-active] [class*="-list"] > *:nth-child(2) { animation-delay: 640ms; }
+.s-vip[data-deck-active] [class*="-grid"] > *:nth-child(3),
+.s-vip[data-deck-active] [class*="-list"] > *:nth-child(3) { animation-delay: 730ms; }
+.s-vip[data-deck-active] [class*="-grid"] > *:nth-child(4),
+.s-vip[data-deck-active] [class*="-list"] > *:nth-child(4) { animation-delay: 820ms; }
+.s-vip[data-deck-active] [class*="-grid"] > *:nth-child(5),
+.s-vip[data-deck-active] [class*="-list"] > *:nth-child(5) { animation-delay: 910ms; }
+.s-vip[data-deck-active] [class*="-grid"] > *:nth-child(n+6),
+.s-vip[data-deck-active] [class*="-list"] > *:nth-child(n+6) { animation-delay: 1000ms; }
+
+
+/* ─── 9. SLIDE 06 · Valor Área VIP (price) ───────────────── */
+
+.s-price[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-price[data-deck-active] h2 {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-price[data-deck-active] [class*="-price"] [class*="-amount"],
+.s-price[data-deck-active] [class*="-figure"] {
+  animation: deck-letterbreath 1000ms 550ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-price[data-deck-active] [class*="-row"],
+.s-price[data-deck-active] [class*="-item"] {
+  animation: deck-rise-sm 600ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-price[data-deck-active] [class*="-row"]:nth-child(1),
+.s-price[data-deck-active] [class*="-item"]:nth-child(1) { animation-delay: 500ms; }
+.s-price[data-deck-active] [class*="-row"]:nth-child(2),
+.s-price[data-deck-active] [class*="-item"]:nth-child(2) { animation-delay: 580ms; }
+.s-price[data-deck-active] [class*="-row"]:nth-child(3),
+.s-price[data-deck-active] [class*="-item"]:nth-child(3) { animation-delay: 660ms; }
+.s-price[data-deck-active] [class*="-row"]:nth-child(4),
+.s-price[data-deck-active] [class*="-item"]:nth-child(4) { animation-delay: 740ms; }
+.s-price[data-deck-active] [class*="-row"]:nth-child(n+5),
+.s-price[data-deck-active] [class*="-item"]:nth-child(n+5) { animation-delay: 820ms; }
+
+
+/* ─── 10. SLIDE 07 · Camarote VIP (intro w/ photo) ───────── */
+
+.s-camarote-intro[data-deck-active] .camarote-photo img {
+  animation: deck-photo-emerge 1400ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-camarote-intro[data-deck-active] .camarote-photo-grad,
+.s-camarote-intro[data-deck-active] [class*="-photo-grad"] {
+  animation: deck-fade 1000ms 300ms both ease-out;
+}
+.s-camarote-intro[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 350ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-camarote-intro[data-deck-active] h1,
+.s-camarote-intro[data-deck-active] h2 {
+  animation: deck-letterbreath 900ms 450ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-camarote-intro[data-deck-active] p {
+  animation: deck-rise-sm 700ms 700ms both cubic-bezier(.2,.7,.2,1);
+}
+
+
+/* ─── 11. SLIDE 08 · Camarote Benefícios ─────────────────── */
+
+.s-cbenefits[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-cbenefits[data-deck-active] h2 {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-cbenefits[data-deck-active] [class*="-grid"] > *,
+.s-cbenefits[data-deck-active] [class*="-list"] > * {
+  animation: deck-rise 650ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-cbenefits[data-deck-active] [class*="-grid"] > *:nth-child(1),
+.s-cbenefits[data-deck-active] [class*="-list"] > *:nth-child(1) { animation-delay: 500ms; }
+.s-cbenefits[data-deck-active] [class*="-grid"] > *:nth-child(2),
+.s-cbenefits[data-deck-active] [class*="-list"] > *:nth-child(2) { animation-delay: 580ms; }
+.s-cbenefits[data-deck-active] [class*="-grid"] > *:nth-child(3),
+.s-cbenefits[data-deck-active] [class*="-list"] > *:nth-child(3) { animation-delay: 660ms; }
+.s-cbenefits[data-deck-active] [class*="-grid"] > *:nth-child(4),
+.s-cbenefits[data-deck-active] [class*="-list"] > *:nth-child(4) { animation-delay: 740ms; }
+.s-cbenefits[data-deck-active] [class*="-grid"] > *:nth-child(5),
+.s-cbenefits[data-deck-active] [class*="-list"] > *:nth-child(5) { animation-delay: 820ms; }
+.s-cbenefits[data-deck-active] [class*="-grid"] > *:nth-child(6),
+.s-cbenefits[data-deck-active] [class*="-list"] > *:nth-child(6) { animation-delay: 900ms; }
+.s-cbenefits[data-deck-active] [class*="-grid"] > *:nth-child(n+7),
+.s-cbenefits[data-deck-active] [class*="-list"] > *:nth-child(n+7) { animation-delay: 980ms; }
+
+
+/* ─── 12. SLIDE 09 · Galeria ─────────────────────────────── */
+
+.s-gallery[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-gallery[data-deck-active] h2 {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-gallery[data-deck-active] [class*="-grid"] > * {
+  animation: deck-photo-emerge 1100ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-gallery[data-deck-active] [class*="-grid"] > *:nth-child(1) { animation-delay: 400ms; }
+.s-gallery[data-deck-active] [class*="-grid"] > *:nth-child(2) { animation-delay: 520ms; }
+.s-gallery[data-deck-active] [class*="-grid"] > *:nth-child(3) { animation-delay: 640ms; }
+.s-gallery[data-deck-active] [class*="-grid"] > *:nth-child(4) { animation-delay: 760ms; }
+.s-gallery[data-deck-active] [class*="-grid"] > *:nth-child(5) { animation-delay: 880ms; }
+.s-gallery[data-deck-active] [class*="-grid"] > *:nth-child(6) { animation-delay: 1000ms; }
+.s-gallery[data-deck-active] [class*="-grid"] > *:nth-child(n+7) { animation-delay: 1120ms; }
+
+
+/* ─── 13. SLIDE 10 · Investimento ─────────────────────────── */
+
+.s-invest[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-invest[data-deck-active] h2 {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-invest[data-deck-active] [class*="-figure"],
+.s-invest[data-deck-active] [class*="-amount"] {
+  animation: deck-letterbreath 1000ms 550ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-invest[data-deck-active] [class*="-row"],
+.s-invest[data-deck-active] [class*="-item"],
+.s-invest[data-deck-active] [class*="-grid"] > *,
+.s-invest[data-deck-active] [class*="-list"] > * {
+  animation: deck-rise-sm 600ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-invest[data-deck-active] [class*="-row"]:nth-child(1),
+.s-invest[data-deck-active] [class*="-item"]:nth-child(1),
+.s-invest[data-deck-active] [class*="-grid"] > *:nth-child(1),
+.s-invest[data-deck-active] [class*="-list"] > *:nth-child(1) { animation-delay: 500ms; }
+.s-invest[data-deck-active] [class*="-row"]:nth-child(2),
+.s-invest[data-deck-active] [class*="-item"]:nth-child(2),
+.s-invest[data-deck-active] [class*="-grid"] > *:nth-child(2),
+.s-invest[data-deck-active] [class*="-list"] > *:nth-child(2) { animation-delay: 580ms; }
+.s-invest[data-deck-active] [class*="-row"]:nth-child(3),
+.s-invest[data-deck-active] [class*="-item"]:nth-child(3),
+.s-invest[data-deck-active] [class*="-grid"] > *:nth-child(3),
+.s-invest[data-deck-active] [class*="-list"] > *:nth-child(3) { animation-delay: 660ms; }
+.s-invest[data-deck-active] [class*="-row"]:nth-child(4),
+.s-invest[data-deck-active] [class*="-item"]:nth-child(4),
+.s-invest[data-deck-active] [class*="-grid"] > *:nth-child(4),
+.s-invest[data-deck-active] [class*="-list"] > *:nth-child(4) { animation-delay: 740ms; }
+.s-invest[data-deck-active] [class*="-row"]:nth-child(n+5),
+.s-invest[data-deck-active] [class*="-item"]:nth-child(n+5),
+.s-invest[data-deck-active] [class*="-grid"] > *:nth-child(n+5),
+.s-invest[data-deck-active] [class*="-list"] > *:nth-child(n+5) { animation-delay: 820ms; }
+
+
+/* ─── 14. SLIDE 11 · Disponibilidade ─────────────────────── */
+
+.s-avail[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-avail[data-deck-active] h2 {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-avail[data-deck-active] [class*="-lede"] {
+  animation: deck-rise-sm 700ms 480ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-avail[data-deck-active] [class*="-grid"] > *,
+.s-avail[data-deck-active] [class*="-list"] > *,
+.s-avail[data-deck-active] [class*="-row"] {
+  animation: deck-rise-sm 650ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-avail[data-deck-active] [class*="-grid"] > *:nth-child(1),
+.s-avail[data-deck-active] [class*="-list"] > *:nth-child(1),
+.s-avail[data-deck-active] [class*="-row"]:nth-child(1) { animation-delay: 500ms; }
+.s-avail[data-deck-active] [class*="-grid"] > *:nth-child(2),
+.s-avail[data-deck-active] [class*="-list"] > *:nth-child(2),
+.s-avail[data-deck-active] [class*="-row"]:nth-child(2) { animation-delay: 570ms; }
+.s-avail[data-deck-active] [class*="-grid"] > *:nth-child(3),
+.s-avail[data-deck-active] [class*="-list"] > *:nth-child(3),
+.s-avail[data-deck-active] [class*="-row"]:nth-child(3) { animation-delay: 640ms; }
+.s-avail[data-deck-active] [class*="-grid"] > *:nth-child(4),
+.s-avail[data-deck-active] [class*="-list"] > *:nth-child(4),
+.s-avail[data-deck-active] [class*="-row"]:nth-child(4) { animation-delay: 710ms; }
+.s-avail[data-deck-active] [class*="-grid"] > *:nth-child(5),
+.s-avail[data-deck-active] [class*="-list"] > *:nth-child(5),
+.s-avail[data-deck-active] [class*="-row"]:nth-child(5) { animation-delay: 780ms; }
+.s-avail[data-deck-active] [class*="-grid"] > *:nth-child(6),
+.s-avail[data-deck-active] [class*="-list"] > *:nth-child(6),
+.s-avail[data-deck-active] [class*="-row"]:nth-child(6) { animation-delay: 850ms; }
+.s-avail[data-deck-active] [class*="-grid"] > *:nth-child(7),
+.s-avail[data-deck-active] [class*="-list"] > *:nth-child(7),
+.s-avail[data-deck-active] [class*="-row"]:nth-child(7) { animation-delay: 920ms; }
+.s-avail[data-deck-active] [class*="-grid"] > *:nth-child(n+8),
+.s-avail[data-deck-active] [class*="-list"] > *:nth-child(n+8),
+.s-avail[data-deck-active] [class*="-row"]:nth-child(n+8) { animation-delay: 990ms; }
+
+
+/* ─── 15. SLIDE 12 · Personalização ──────────────────────── */
+
+.s-custom[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-custom[data-deck-active] h2 {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-custom[data-deck-active] [class*="-lede"] {
+  animation: deck-rise-sm 700ms 480ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-custom[data-deck-active] [class*="-grid"] > *,
+.s-custom[data-deck-active] [class*="-list"] > * {
+  animation: deck-rise 700ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-custom[data-deck-active] [class*="-grid"] > *:nth-child(1),
+.s-custom[data-deck-active] [class*="-list"] > *:nth-child(1) { animation-delay: 600ms; }
+.s-custom[data-deck-active] [class*="-grid"] > *:nth-child(2),
+.s-custom[data-deck-active] [class*="-list"] > *:nth-child(2) { animation-delay: 700ms; }
+.s-custom[data-deck-active] [class*="-grid"] > *:nth-child(3),
+.s-custom[data-deck-active] [class*="-list"] > *:nth-child(3) { animation-delay: 800ms; }
+.s-custom[data-deck-active] [class*="-grid"] > *:nth-child(4),
+.s-custom[data-deck-active] [class*="-list"] > *:nth-child(4) { animation-delay: 900ms; }
+
+
+/* ─── 16. SLIDE 13 · Serviços Adicionais ─────────────────── */
+
+.s-services[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 200ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-services[data-deck-active] h2 {
+  animation: deck-rise 800ms 300ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-services[data-deck-active] [class*="-lede"] {
+  animation: deck-rise-sm 700ms 480ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-services[data-deck-active] [class*="-grid"] > *,
+.s-services[data-deck-active] [class*="-list"] > * {
+  animation: deck-rise 650ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-services[data-deck-active] [class*="-grid"] > *:nth-child(1),
+.s-services[data-deck-active] [class*="-list"] > *:nth-child(1) { animation-delay: 550ms; }
+.s-services[data-deck-active] [class*="-grid"] > *:nth-child(2),
+.s-services[data-deck-active] [class*="-list"] > *:nth-child(2) { animation-delay: 640ms; }
+.s-services[data-deck-active] [class*="-grid"] > *:nth-child(3),
+.s-services[data-deck-active] [class*="-list"] > *:nth-child(3) { animation-delay: 730ms; }
+.s-services[data-deck-active] [class*="-grid"] > *:nth-child(4),
+.s-services[data-deck-active] [class*="-list"] > *:nth-child(4) { animation-delay: 820ms; }
+.s-services[data-deck-active] [class*="-grid"] > *:nth-child(5),
+.s-services[data-deck-active] [class*="-list"] > *:nth-child(5) { animation-delay: 910ms; }
+.s-services[data-deck-active] [class*="-grid"] > *:nth-child(n+6),
+.s-services[data-deck-active] [class*="-list"] > *:nth-child(n+6) { animation-delay: 1000ms; }
+
+
+/* ─── 17. SLIDE 14 · Próximos Passos ─────────────────────── */
+
+.s-next[data-deck-active] .next-bg-photo img,
+.s-next[data-deck-active] [class*="-bg-photo"] img {
+  animation: deck-photo-emerge 1600ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-next[data-deck-active] .eyebrow {
+  animation: deck-rise-sm 600ms 350ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-next[data-deck-active] h1,
+.s-next[data-deck-active] h2 {
+  animation: deck-letterbreath 1000ms 450ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-next[data-deck-active] p {
+  animation: deck-rise-sm 700ms 700ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-next[data-deck-active] [class*="-grid"] > *,
+.s-next[data-deck-active] [class*="-list"] > *,
+.s-next[data-deck-active] [class*="-row"] > * {
+  animation: deck-rise-sm 600ms both cubic-bezier(.2,.7,.2,1);
+}
+.s-next[data-deck-active] [class*="-grid"] > *:nth-child(1),
+.s-next[data-deck-active] [class*="-list"] > *:nth-child(1),
+.s-next[data-deck-active] [class*="-row"] > *:nth-child(1) { animation-delay: 850ms; }
+.s-next[data-deck-active] [class*="-grid"] > *:nth-child(2),
+.s-next[data-deck-active] [class*="-list"] > *:nth-child(2),
+.s-next[data-deck-active] [class*="-row"] > *:nth-child(2) { animation-delay: 930ms; }
+.s-next[data-deck-active] [class*="-grid"] > *:nth-child(3),
+.s-next[data-deck-active] [class*="-list"] > *:nth-child(3),
+.s-next[data-deck-active] [class*="-row"] > *:nth-child(3) { animation-delay: 1010ms; }
+.s-next[data-deck-active] [class*="-grid"] > *:nth-child(n+4),
+.s-next[data-deck-active] [class*="-list"] > *:nth-child(n+4),
+.s-next[data-deck-active] [class*="-row"] > *:nth-child(n+4) { animation-delay: 1090ms; }
+
+
+/* ─── 18. Accessibility & print ──────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  deck-stage > section {
+    transition: opacity 200ms ease;
+    transform: none;
+    filter: none;
+  }
+  deck-stage > section[data-deck-active] *,
+  [data-deck-active] * {
+    animation: none !important;
+  }
+}
+
+@media print {
+  deck-stage > section {
+    transition: none;
+    transform: none;
+    filter: none;
+    opacity: 1;
+  }
+  deck-stage > section *,
+  [data-deck-active] * {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,197 @@
+/* ─────────────────────────────────────────────
+   E+ MKT  ·  Rock in Rio 2026  ·  Hospitalidade
+   ───────────────────────────────────────────── */
+
+:root {
+  /* Palette */
+  --ink:           #0a0a0c;
+  --ink-2:         #14110e;     /* warm dark layer */
+  --ink-3:         #1d1812;     /* card surface */
+  --paper:         #f5f1ea;
+  --cream:         #efe7d6;
+  --muted:         rgba(245, 241, 234, 0.62);
+  --muted-2:       rgba(245, 241, 234, 0.38);
+  --line:          rgba(245, 241, 234, 0.12);
+  --line-strong:   rgba(245, 241, 234, 0.28);
+
+  --brand-red:     #e11d2e;
+  --brand-red-2:   #c11424;
+  --brand-red-deep:#7a0d18;
+  --frances-navy:  #0b1f4d;
+  --gold:          #c9a96e;
+  --gold-2:        #a78544;
+
+  /* Type scale */
+  --f-display: "Anton", "Archivo Black", "Impact", sans-serif;
+  --f-head:    "Archivo", "Manrope", system-ui, sans-serif;
+  --f-body:    "Manrope", system-ui, sans-serif;
+  --f-mono:    "JetBrains Mono", "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* deck-stage section base */
+deck-stage section {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--f-body);
+}
+
+/* ──────  global typography helpers  ────── */
+.eyebrow {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+}
+.eyebrow.muted { color: var(--muted); }
+.eyebrow.gold  { color: var(--gold); }
+
+.section-num {
+  font-family: var(--f-mono);
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  color: var(--muted-2);
+}
+
+.hairline {
+  height: 1px;
+  background: var(--line-strong);
+  width: 100%;
+}
+
+/* ──────  footer (per slide chrome)  ────── */
+.slide-footer {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--f-head);
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  z-index: 5;
+}
+.slide-footer .ft-left { display: flex; align-items: center; gap: 18px; }
+.slide-footer .ft-right { display: flex; align-items: center; gap: 20px; }
+.slide-footer .ft-dot {
+  width: 6px; height: 6px;
+  background: var(--brand-red);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.slide-footer .ft-logo {
+  height: 36px;
+  width: auto;
+  opacity: 0.92;
+  display: block;
+  flex-shrink: 0;
+}
+.slide-footer .ft-sep {
+  width: 1px;
+  height: 22px;
+  background: var(--line-strong);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* slide page number */
+.slide-num {
+  position: absolute;
+  right: 80px;
+  top: 40px;
+  font-family: var(--f-mono);
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  color: var(--muted-2);
+  z-index: 5;
+}
+.slide-num strong { color: var(--paper); font-weight: 500; }
+
+/* ──────  red dust / grain background  ────── */
+.bg-grain {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(225, 29, 46, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 10% 90%, rgba(201, 169, 110, 0.08) 0%, transparent 60%);
+  z-index: 0;
+}
+
+/* ──────  marquee divider  ────── */
+.marquee-band {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--f-display);
+  font-size: 28px;
+  letter-spacing: 0.06em;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.marquee-band .dot {
+  width: 8px; height: 8px;
+  background: var(--brand-red);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ──────  buttons & pills  ────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--f-head);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.pill .pill-dot {
+  width: 6px; height: 6px;
+  background: var(--brand-red);
+  border-radius: 50%;
+}
+.pill.red { background: var(--brand-red); border-color: var(--brand-red); color: white; }
+.pill.gold { color: var(--gold); border-color: rgba(201, 169, 110, 0.4); }
+
+/* ──────  big-number tile  ────── */
+.huge-num {
+  font-family: var(--f-display);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+}
+
+/* ──────  cards  ────── */
+.card {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 32px;
+}
+
+/* ──────  page-specific helpers below ────── */
